@@ -2,9 +2,13 @@ import { useState, useEffect } from 'react'
 import Header from './header';
 import Slideshow from './slideshow';
 import Category from './category';
+import HomeFooter from './homeFooter';
 import '/src/styles/home.css'
 
-const Home = () => {
+const Home = (props) => {
+
+    let setMode = props.setMode;
+    let mode = props.mode;
 
     useEffect(() => {
         async function getData(){
@@ -14,13 +18,14 @@ const Home = () => {
         }
 
         getData();
-    })
+    },[])
 
     return(
         <div className='main-home'>
-        <Header></Header>
+        <Header setMode={setMode} mode={mode}></Header>
         <Slideshow></Slideshow>
         <Category></Category>
+        <HomeFooter></HomeFooter>
         </div>
     )
 }
