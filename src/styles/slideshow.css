@@ -1,18 +1,55 @@
+@font-face {
+    font-family: turret;
+    src: url('../assets/TurretRoad-Regular.ttf');
+  }
+
 ol{
     list-style: none;
     width:100%;
 }
 
 ol li{
-    background-color: black;
+    background-color: white;
     border-radius: 50%;
     display: inline-block;
-    position: relative;
+    position: absolute;
     width:20px;
     height:20px;
     cursor: pointer;
 }
 
 #slideImg{
-    position: absolute;
+    max-width: 100%;
+    height: 100%;
+    object-fit: fill;
+    aspect-ratio: 16 / 9;
+    border-radius: 30px;
+}
+
+#slider-wrapper{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 0% 3% 0 3%;
+}
+
+.content-wrapper{
+    display: grid;
+    border-radius: 30px;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-color: black;
+}
+
+.slide-content{
+    display: flex;
+    font-family: turret;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: clamp(1rem, 10vw, 3rem);
 }
