@@ -3,7 +3,9 @@ import '/src/styles/slideshow.css'
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 
 let i=0;
-let images = [{src:'src/assets/img1.jpg', alt:'welcome image'},{src:'src/assets/img2.webp', alt:'samsung QLED TV'}];
+let images = [{src:'src/assets/img1.jpg', alt:'welcome image'},{src:'src/assets/img2.webp', alt:'samsung QLED TV'}, {src:"src/assets/img3.jpg", 
+alt:"White Gold Plated Princess"}, {src:"src/assets/img4.jpg", alt:"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"}, {src:"src/assets/img5.jpg", 
+alt:"Rain Jacket Women Windbreaker Striped Climbing Raincoats"}];
 let initialX, initialY, initialTime;
 
 function Slideshow(){
@@ -60,10 +62,10 @@ function Slideshow(){
         let deltaTime = new Date() - initialTime;
 
         if(deltaX <= -30 && deltaY <= 100 && deltaTime <= 300) {
-            handleArrow("left");
+            handleArrow();
          }
          else if(deltaX >= 30 && deltaY <= 100 && deltaTime <= 300){
-            handleArrow();
+            handleArrow("left");
         }
     }
 
@@ -93,8 +95,11 @@ function Slideshow(){
                     </div>
                 </div>
                 <ol>
-                    <li id='bg1' style={slide===1 ? {backgroundColor:'white',opacity:1} : null} onClick={() => {handleSlide(1)}}></li>
-                    <li id='bg2' style={slide===2 ? {backgroundColor:'white',opacity:1} : null} onClick={() => {handleSlide(2)}}></li>
+                    <li style={slide===1 ? {backgroundColor:'white',opacity:1} : null} onClick={() => {handleSlide(1)}}></li>
+                    <li style={slide===2 ? {backgroundColor:'white',opacity:1} : null} onClick={() => {handleSlide(2)}}></li>
+                    <li style={slide===3 ? {backgroundColor:'white',opacity:1} : null} onClick={() => {handleSlide(3)}}></li>
+                    <li style={slide===4 ? {backgroundColor:'white',opacity:1} : null} onClick={() => {handleSlide(4)}}></li>
+                    <li style={slide===5 ? {backgroundColor:'white',opacity:1} : null} onClick={() => {handleSlide(5)}}></li>
                 </ol>
             </div>
         </section>
