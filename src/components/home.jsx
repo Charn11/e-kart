@@ -22,10 +22,10 @@ const Home = (props) => {
 
     return(
         <div className='main-home'>
-        <Header setMode={setMode} mode={mode}></Header>
-        <Slideshow></Slideshow>
-        <Category></Category>
-        <HomeFooter></HomeFooter>
+            <Header setMode={setMode} mode={mode}></Header>
+            <Slideshow></Slideshow>
+            <Category></Category>
+            <HomeFooter></HomeFooter>
         </div>
     )
 }

@@ -5,6 +5,7 @@
 
 #slider-wrapper{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     position: relative;
     height: 100%;
@@ -61,10 +62,10 @@ ol li{
 
     ol{
         list-style: none;
-        width:100%;
-        position: fixed;
+        width: 80%;
+        position: absolute;
         left: 5%;
-        top: 70%
+        top: 90%
     }
     
     li:hover{
@@ -85,8 +86,8 @@ ol li{
     ol{
         list-style: none;
         width:100%;
-        position: fixed;
-        bottom: 55%;
+        position: absolute;
+        top: 85%;
     }
 
     ol li{

@@ -1,8 +1,8 @@
 .main-home{
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: grid;
-    grid-template-rows: 10% 65% 20% 5%;
+    grid-template-rows: 10% 65% auto 5%;
 }
 
 @media (max-width: 1024px){
