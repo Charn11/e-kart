@@ -85,8 +85,9 @@ ol li{
 
     ol{
         list-style: none;
-        width:100%;
+        width:80%;
         position: absolute;
+        left: 3%;
         top: 85%;
     }
 

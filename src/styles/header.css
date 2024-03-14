@@ -37,6 +37,13 @@ ul{
     justify-content: space-between;
 }
 
+
+@media (max-width: 1024px){
+    ul{
+        gap: 30%;
+    }
+}
+
 ul>li>a{
     cursor: pointer;
     font-family: turret;
