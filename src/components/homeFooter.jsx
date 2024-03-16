@@ -1,6 +1,8 @@
+import '/src/styles/footer.css'
+
 function HomeFooter(){
     return(
-        <footer>Footer</footer>
+        <footer>© 2024 E-kart. All rights reserved.</footer>
     )
 }
 

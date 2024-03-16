@@ -21,14 +21,14 @@ const Header = (props) => {
     function changeMode(){
         if(mode==='light'){
             return(
-                <Toggle.Root className="Toggle" aria-label="Toggle italic" id='lightToggle' onClick={handleClick}>
+                <Toggle.Root className="Toggle" aria-label="Change site theme" id='lightToggle' onClick={handleClick}>
                     <SunIcon height={24} width={24}></SunIcon>
                 </Toggle.Root> 
             )
         }
         else if(mode==='dark'){
             return(
-                <Toggle.Root className="Toggle" aria-label="Toggle italic" id='darkToggle' onClick={handleClick}>
+                <Toggle.Root className="Toggle" aria-label="Change site theme" id='darkToggle' onClick={handleClick}>
                     <MoonIcon height={24} width={24}></MoonIcon>
                 </Toggle.Root> 
             )
@@ -46,7 +46,7 @@ const Header = (props) => {
                 <li><a>SHOP</a></li>
                 </ul>
             </div>
-            <div className="darkmode">
+            <div className="darkmode" data-testid='toggle'>
                     {changeMode()}
             </div>
             <div className="cartbar">
