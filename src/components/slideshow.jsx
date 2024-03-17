@@ -87,11 +87,11 @@ function Slideshow(){
             <div id='slider-wrapper'>
                 <div className='arrow-wrapper'>
                     <div className='left'>
-                        <ArrowLeftIcon width={30} height={30} onClick={() => {handleArrow("left")}}></ArrowLeftIcon>
+                        <ArrowLeftIcon data-testid='left' width={30} height={30} onClick={() => {handleArrow("left")}}></ArrowLeftIcon>
                     </div>
                     {slider()}
                     <div className='right'>
-                        <ArrowRightIcon width={30} height={30} onClick={() => {handleArrow()}}></ArrowRightIcon>
+                        <ArrowRightIcon data-testid='right' width={30} height={30} onClick={() => {handleArrow()}}></ArrowRightIcon>
                     </div>
                 </div>
                 <ol>
