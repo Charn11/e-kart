@@ -9,7 +9,7 @@
 .p-container{
     width: 100%;
     height: auto;
-    padding-bottom: 5px;
+    padding-bottom: 25px;
 }
 .p-container>p{
     font-family: turret;

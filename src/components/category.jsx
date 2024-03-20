@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import '/src/styles/category.css'
 
 function Category(){

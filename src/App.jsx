@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './App.css'
-import Home from './components/home'
-import { Theme } from '@radix-ui/themes';
+import { Outlet } from "react-router-dom";
 
+export const ThemeContext = React.createContext();
 
 function App() {
 
@@ -10,9 +10,9 @@ function App() {
 
   return (
     <>
-      <Theme>
-        <Home mode={mode} setMode={setMode}></Home>
-      </Theme>
+      <ThemeContext.Provider value={{theme: [mode, setMode]}}>
+        <Outlet></Outlet>
+      </ThemeContext.Provider>
     </>
   )
 }

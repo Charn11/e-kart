@@ -1,0 +1,17 @@
+.dropdown{
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0px 3% 0px 3%;
+    width: 100%;
+}
+
+.drop-heading{
+    font-weight: 600;
+}
+
+.dropmenu, .dropbutton{
+    width: 100%;
+    font-weight: 500;
+}

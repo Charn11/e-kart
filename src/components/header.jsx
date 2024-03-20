@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import '/src/styles/header.css'
 import * as Toggle from '@radix-ui/react-toggle';
 import { SunIcon, MoonIcon } from '@radix-ui/react-icons'
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { ThemeContext } from "../App";
 
-const Header = (props) => {
+const Header = () => {
 
-    let setMode = props.setMode;
-    let mode = props.mode;
+    const { theme } = useContext(ThemeContext);
+    const [mode, setMode] = theme;
 
     useEffect(() => {
         changeMode();
@@ -42,8 +43,8 @@ const Header = (props) => {
             </div>
             <div className='navbar'>
                 <ul>
-                <li><a>HOME</a></li>
-                <li><a>SHOP</a></li>
+                <li><Link to="/">HOME</Link></li>
+                <li><Link to="shop">SHOP</Link></li>
                 </ul>
             </div>
             <div className="darkmode" data-testid='toggle'>
