@@ -4,6 +4,7 @@ import * as Toggle from '@radix-ui/react-toggle';
 import { SunIcon, MoonIcon } from '@radix-ui/react-icons'
 import { useEffect, useContext } from "react";
 import { ThemeContext } from "../App";
+import { Tooltip } from '@radix-ui/themes';
 
 const Header = () => {
 
@@ -22,16 +23,20 @@ const Header = () => {
     function changeMode(){
         if(mode==='light'){
             return(
+                <Tooltip content="Change theme">
                 <Toggle.Root className="Toggle" aria-label="Change site theme" id='lightToggle' onClick={handleClick}>
                     <SunIcon height={24} width={24}></SunIcon>
-                </Toggle.Root> 
+                </Toggle.Root>
+                </Tooltip>
             )
         }
         else if(mode==='dark'){
             return(
+                <Tooltip content="Change theme">
                 <Toggle.Root className="Toggle" aria-label="Change site theme" id='darkToggle' onClick={handleClick}>
                     <MoonIcon height={24} width={24}></MoonIcon>
                 </Toggle.Root> 
+                </Tooltip>
             )
         }
     }
@@ -50,9 +55,11 @@ const Header = () => {
             <div className="darkmode" data-testid='toggle'>
                     {changeMode()}
             </div>
+            <Tooltip content="Cart">
             <div className="cartbar">
                 <a><img src="src/assets/shopping_cart_FILL0_wght400_GRAD0_opsz24.svg" alt="cart"></img></a> 
             </div>
+            </Tooltip>
             </div>          
         </header>
     )
