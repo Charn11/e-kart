@@ -32,7 +32,7 @@ const Products = () => {
     useEffect(() => {
         if(value!=="All"){
             if(screen.width>1024){
-                setGrid("repeat(5, min-content)");
+                setGrid("repeat(auto-fit, minmax(50%, min-content))");
             }else{
                 setGrid("repeat(10, min-content)")
             }

@@ -65,6 +65,10 @@
     height: 20%;
 }
 
+.remove-cart>img, .add-cart>img{
+    cursor: pointer;
+}
+ 
 input{
     width: 100%;
     text-align: center;
