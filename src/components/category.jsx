@@ -1,12 +1,11 @@
 import '/src/styles/category.css'
 import { Link } from "react-router-dom";
 import { CategoryContext } from '../App'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 
 function Category(){
 
     const categoryValue = useContext(CategoryContext);
-    const value = categoryValue.value;
     const setValue = categoryValue.setValue;
 
     return(

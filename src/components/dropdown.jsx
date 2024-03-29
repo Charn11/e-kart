@@ -13,7 +13,7 @@ const Dropdown = () => {
         <div className='dropdown'>
             <div className='drop-heading'><p>Choose Category:</p></div>
             <div className='dropmenu'>
-            <Select.Root size="3" defaultValue={value} onValueChange={setValue}>
+            <Select.Root size="3" value={value} onValueChange={setValue}>
                 <Select.Trigger variant="surface" color="cyan" radius="large" className='dropbutton'/>
                 <Select.Content position="popper" color="cyan" >
                     <Select.Item value="All">All</Select.Item>

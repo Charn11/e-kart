@@ -4,6 +4,7 @@ import Dropdown from './dropdown'
 import Products from './Products'
 import React from 'react'
 import HomeFooter from './homeFooter';
+import Cart from './cart';
 
 const Shop = () => {
 
@@ -13,6 +14,7 @@ const Shop = () => {
             <Dropdown></Dropdown>
             <Products></Products>
             <HomeFooter></HomeFooter>
+            <Cart></Cart>
         </div>
     )
 }

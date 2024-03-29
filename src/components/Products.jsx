@@ -1,15 +1,19 @@
-import { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Card from './card';
 import '/src/styles/products.css'
-import { CategoryContext } from '../App'
+import { CategoryContext, GridContext } from '../App'
 
 const Products = () => {
 
     const [products, setProducts] = useState([]);
     const [loadProducts, setLoadProducts] = useState(false);
-    const [gridVal, setGrid] = useState("repeat(5, 1fr)");
+    const [gridVal, setGrid] = useState("");
     const categoryValue = useContext(CategoryContext);
     const value = categoryValue.value;
+    const grid = useContext(GridContext)
+    const updateGrid = grid.updateGrid;
+    const setUpdate = grid.setUpdate;
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
     useEffect(() => {
         async function getData(){
@@ -30,25 +34,45 @@ const Products = () => {
     },[])
 
     useEffect(() => {
-        if(value!=="All"){
-            if(screen.width>1024){
-                setGrid("repeat(auto-fit, minmax(50%, min-content))");
-            }else{
-                setGrid("repeat(10, min-content)")
+        function reportWindowSize() {
+            setWindowWidth(window.innerWidth)
+        }
+        window.addEventListener('resize', reportWindowSize)
+        return () => window.removeEventListener('resize', reportWindowSize)
+    },)
+
+    function handleGrid(){
+        let cards = document.getElementsByClassName("card-container")
+        let length = cards.length;
+        if(windowWidth>1024){
+            if(length<=4){ 
+                setGrid("repeat("+1+", 1fr)");
+            }
+            else{
+                let i=Math.ceil(length/4);
+                setGrid("repeat("+i+", 1fr)");
             }
         }else{
-            if(screen.width>1024){
-                setGrid("repeat(5, 1fr)");
+            if(length<=2){ 
+                setGrid("repeat("+1+", 1fr)");
             }else{
-                setGrid("repeat(10, 1fr)")
+                let i=Math.ceil(length/2);
+                setGrid("repeat("+i+", 1fr)");
             }
         }
-    },[value, screen.width])
+    }
+
+    useEffect(() => {
+        handleGrid();
+        setUpdate(false);
+    },[updateGrid, windowWidth])
     
     return(
+        <main>
         <div className="products" style={{gridTemplateRows: gridVal}}>
             <Card products={products} loadProducts={loadProducts} ></Card>
         </div>
+        </main>
     )
 }
 

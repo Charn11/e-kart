@@ -3,13 +3,17 @@ import '/src/styles/header.css'
 import * as Toggle from '@radix-ui/react-toggle';
 import { SunIcon, MoonIcon } from '@radix-ui/react-icons'
 import { useEffect, useContext } from "react";
-import { ThemeContext } from "../App";
+import { ThemeContext, CartContext } from "../App";
 import { Tooltip } from '@radix-ui/themes';
+import Cart from "./cart";
 
 const Header = () => {
 
     const { theme } = useContext(ThemeContext);
     const [mode, setMode] = theme;
+    const cart = useContext(CartContext);
+    const dispCart = cart.dispCart;
+    const setDispCart = cart.setDispCart;
 
     useEffect(() => {
         changeMode();
@@ -18,6 +22,10 @@ const Header = () => {
     function handleClick(){
         if(mode==='light') setMode('dark');
         if(mode==='dark') setMode('light');
+    }
+
+    function handleCart(){
+        setDispCart(true);
     }
 
     function changeMode(){
@@ -57,10 +65,10 @@ const Header = () => {
             </div>
             <Tooltip content="Cart">
             <div className="cartbar">
-                <a><img src="src/assets/shopping_cart_FILL0_wght400_GRAD0_opsz24.svg" alt="cart"></img></a> 
+                <a><img onClick={handleCart} src="src/assets/shopping_cart_FILL0_wght400_GRAD0_opsz24.svg" alt="cart"></img></a> 
             </div>
             </Tooltip>
-            </div>          
+            </div>
         </header>
     )
 }

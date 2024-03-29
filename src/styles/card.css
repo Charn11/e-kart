@@ -44,8 +44,14 @@
     font-size: clamp(0.6rem,1vw,1.2rem);
 }
 
+.price{
+    font-weight: 700;
+}
+
 .star{
     font-weight: 600;
+    padding: 0 2px 0 2px;
+    text-align: center;
 }
 
 .cart-container{
@@ -67,6 +73,10 @@
 
 .remove-cart>img, .add-cart>img{
     cursor: pointer;
+}
+
+.star>svg{
+    padding-top: 5px;
 }
  
 input{
@@ -93,8 +103,7 @@ input{
         font-size: clamp(0.6rem,1.5vw,1.6rem);
     }
     .star>svg{
-        position: relative;
-        top: 2.5px;
+        padding-top: 6px;
     }
     
 }

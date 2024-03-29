@@ -4,17 +4,25 @@ import { Outlet } from "react-router-dom";
 
 export const ThemeContext = React.createContext();
 export const CategoryContext = React.createContext();
+export const CartContext = React.createContext();
+export const GridContext = React.createContext();
 
 function App() {
 
-  const[mode,setMode] = useState('light');
+  const [mode,setMode] = useState('light');
   const [value, setValue] = useState("All");
+  const [dispCart, setDispCart] = useState(false);
+  const [updateGrid, setUpdate] = useState(false);
 
   return (
     <>
       <ThemeContext.Provider value={{theme: [mode, setMode]}}>
         <CategoryContext.Provider value={{value, setValue}}>
-          <Outlet></Outlet>
+          <CartContext.Provider value={{dispCart, setDispCart}}>
+            <GridContext.Provider value={{updateGrid, setUpdate}}>
+              <Outlet></Outlet>
+            </GridContext.Provider>
+          </CartContext.Provider>
         </CategoryContext.Provider>
       </ThemeContext.Provider>
     </>
