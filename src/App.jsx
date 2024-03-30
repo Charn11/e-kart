@@ -13,6 +13,7 @@ function App() {
   const [value, setValue] = useState("All");
   const [dispCart, setDispCart] = useState(false);
   const [updateGrid, setUpdate] = useState(false);
+  const [cartItems, setCartItems] = useState({});
 
   return (
     <>
