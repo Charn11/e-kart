@@ -71,7 +71,11 @@
     height: 20%;
 }
 
-.remove-cart>img, .add-cart>img{
+.add-cart>img{
+    cursor: pointer;
+}
+
+.remove-cart>img{
     cursor: pointer;
 }
 

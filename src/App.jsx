@@ -6,6 +6,7 @@ export const ThemeContext = React.createContext();
 export const CategoryContext = React.createContext();
 export const CartContext = React.createContext();
 export const GridContext = React.createContext();
+export const ItemContext = React.createContext();
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
   const [value, setValue] = useState("All");
   const [dispCart, setDispCart] = useState(false);
   const [updateGrid, setUpdate] = useState(false);
-  const [cartItems, setCartItems] = useState({});
+  const [cartProducts, setCartProducts] = useState([]);
 
   return (
     <>
@@ -21,7 +22,9 @@ function App() {
         <CategoryContext.Provider value={{value, setValue}}>
           <CartContext.Provider value={{dispCart, setDispCart}}>
             <GridContext.Provider value={{updateGrid, setUpdate}}>
-              <Outlet></Outlet>
+              <ItemContext.Provider value={{cartProducts, setCartProducts}}>
+                <Outlet></Outlet>
+              </ItemContext.Provider>  
             </GridContext.Provider>
           </CartContext.Provider>
         </CategoryContext.Provider>
