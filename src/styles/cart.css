@@ -37,6 +37,16 @@
     justify-content: space-evenly;
 }
 
+.adddel>svg, button{
+    cursor: pointer;
+}
+
+.adddel{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
 .remove{
     background-color: black;
     color: white;
@@ -66,16 +76,24 @@
 
 @media (max-width: 1024px){
     .cart{
-        width: 80%;
+        width: 90%;
         height: auto;
         font-size: clamp(0.6rem,1.5vw,1.6rem);
     }
     .cart-edit{
+        width: 100%;
         display: grid;
+        height: auto;
+        row-gap: 15px;
         grid-template-rows: 1fr 1fr;
+        align-items: center;
     }
-    .remove{
-        grid-row-start: 1;
-        grid-row-end: 4;
+    .cart-edit>*{
+        justify-self: center;
+    }
+    .adddel{
+        display: flex;
+        gap: 15px;
+        justify-content: space-between;
     }
 }

@@ -70,7 +70,7 @@ const Card = (props) => {
             if(added){
                 setCartProducts(cartProducts.map((item, j) => {
                     if(index===j){
-                        return {...item, price: Math.round((item.price+cartPrice*cartQuantity + Number.EPSILON) * 100) / 100, 
+                        return {...item, price: Math.round((item.price+(cartPrice*cartQuantity) + Number.EPSILON) * 100) / 100, 
                         quantity: Math.round((item.quantity+cartQuantity + Number.EPSILON) * 100) / 100}
                     }else{
                         return item;

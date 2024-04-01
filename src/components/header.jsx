@@ -5,7 +5,6 @@ import { SunIcon, MoonIcon } from '@radix-ui/react-icons'
 import { useEffect, useContext } from "react";
 import { ThemeContext, CartContext } from "../App";
 import { Tooltip } from '@radix-ui/themes';
-import Cart from "./cart";
 
 const Header = () => {
 

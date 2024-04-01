@@ -4,6 +4,8 @@ import { CartContext, ItemContext } from "../App";
 import { Table } from '@radix-ui/themes';
 import { PlusIcon, MinusIcon } from '@radix-ui/react-icons';
 
+let title, quantity, price, originalPrice;
+
 const Cart = () => {
 
     const cart = useContext(CartContext);
@@ -15,6 +17,8 @@ const Cart = () => {
     const setCartProducts = cartValues.setCartProducts;
 
     const [cartItems, setCartitems] = useState([]);
+    const [updatePlus, setPlus] = useState(false);
+    const [updateMinus, setMinus] = useState(false);
 
     function handleClose(){
         setDispCart(false);
@@ -24,6 +28,80 @@ const Cart = () => {
         return cartItems;
     }
 
+    function handleRemove(rem){
+        setCartProducts(cartProducts.filter(a => a.title !== rem));
+    }
+
+    function handlePlus(t, q, p, o){
+        title = t;
+        quantity = q;
+        price = p;
+        originalPrice = o;
+        setPlus(true);
+    }
+
+    function handleDel(t, q, p, o){
+        title = t;
+        quantity = q;
+        price = p;
+        originalPrice = o;
+        setMinus(true);
+    }
+
+    useEffect(() => {
+        let index;
+        let added = false;
+        for(let i=0; i<cartProducts.length; i++){
+            if(cartProducts[i].title===title){
+                index = i;
+                added = true;
+                break;
+            }
+        }
+        if(updatePlus){
+            if(added){
+                setCartProducts(cartProducts.map((item, j) => {
+                    if(index===j){
+                        return {...item, price: Math.round((item.price+(originalPrice*quantity) + Number.EPSILON) * 100) / 100, 
+                        quantity: Math.round((item.quantity+quantity + Number.EPSILON) * 100) / 100}
+                    }else{
+                        return item;
+                    }
+                }))
+            }
+            setPlus(false)
+        }
+
+        if(updateMinus){
+            if(added){
+                setCartProducts(cartProducts.map((item, j) => {
+                    if(index===j){
+                        return {...item, price: Math.round((item.price-(originalPrice*quantity) + Number.EPSILON) * 100) / 100, 
+                        quantity: Math.round((item.quantity-quantity + Number.EPSILON) * 100) / 100}
+                    }else{
+                        return item;
+                    }
+                }))
+            }
+            if(cartProducts[index].quantity===0){
+                handleRemove(title)
+            }
+            setMinus(false);
+        }
+    },[updatePlus, updateMinus])
+
+    useEffect(() => {
+        for(let i=0; i<cartProducts.length; i++){
+            if(cartProducts[i].quantity===0){
+                handleRemove(cartProducts[i].title)
+            }
+        }
+    },[cartProducts])
+
+    useEffect(() => {
+        console.log(cartProducts)
+    },[cartProducts])
+
     useEffect(() => {
         if(dispCart===true){
             document.getElementById("cart").style.display = "block";
@@ -32,6 +110,7 @@ const Cart = () => {
             for(let i=0; i< blurTags.length; i++){
                 if(blurTags[i].id!=="cart"){
                     blurTags[i].style.filter = "blur(25px)"
+                    blurTags[i].style.pointerEvents = "none";
                 }
             }
         }else{
@@ -41,6 +120,7 @@ const Cart = () => {
             for(let i=0; i< blurTags.length; i++){
                 if(blurTags[i].id!=="cart"){
                     blurTags[i].style.filter = "blur(0px)"
+                    blurTags[i].style.pointerEvents = "auto";
                 }
             }
         }
@@ -57,9 +137,13 @@ const Cart = () => {
                     <Table.Cell width={'5%'} justify={'center'} >{cartProducts[i].price}</Table.Cell>
                     <Table.Cell width={'50%'} justify={'center'}>
                         <div className='cart-edit'>
-                            <button className='remove'>Remove</button>
-                            <MinusIcon></MinusIcon>
-                            <PlusIcon></PlusIcon>
+                            <button onClick={() => handleRemove(cartProducts[i].title)} className='remove'>Remove</button>
+                            <div className='adddel'>
+                            <MinusIcon onClick={() => handleDel(cartProducts[i].title, 1, cartProducts[i].price, 
+                                cartProducts[i].originalPrice)}></MinusIcon>
+                            <PlusIcon onClick={() => handlePlus(cartProducts[i].title, 1, cartProducts[i].price, 
+                                cartProducts[i].originalPrice)}></PlusIcon>
+                            </div>
                         </div>
                     </Table.Cell>
                 </Table.Row>
@@ -71,6 +155,8 @@ const Cart = () => {
     useEffect(() => {
         if(cartItems.length>0){
             document.getElementById('empty').style.display = "none";
+        }else{
+            document.getElementById('empty').style.display = "flex";
         }
         console.log(cartItems)
     },[cartItems])
