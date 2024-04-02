@@ -1,15 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react'
 import Card from './card';
 import '/src/styles/products.css'
-import { CategoryContext, GridContext } from '../App'
+import { GridContext } from '../App'
 
 const Products = () => {
 
     const [products, setProducts] = useState([]);
     const [loadProducts, setLoadProducts] = useState(false);
     const [gridVal, setGrid] = useState("");
-    const categoryValue = useContext(CategoryContext);
-    const value = categoryValue.value;
     const grid = useContext(GridContext)
     const updateGrid = grid.updateGrid;
     const setUpdate = grid.setUpdate;
@@ -22,7 +20,6 @@ const Products = () => {
                     let response = await data.json();
                     setLoadProducts(true);
                     setProducts(response);
-                    console.log(response)
                 }
             catch{
                 console.error("error")

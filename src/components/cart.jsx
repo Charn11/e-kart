@@ -99,10 +99,6 @@ const Cart = () => {
     },[cartProducts])
 
     useEffect(() => {
-        console.log(cartProducts)
-    },[cartProducts])
-
-    useEffect(() => {
         if(dispCart===true){
             document.getElementById("cart").style.display = "block";
             let pTags = document.querySelectorAll(".main-home, .shop-page");
@@ -158,7 +154,6 @@ const Cart = () => {
         }else{
             document.getElementById('empty').style.display = "flex";
         }
-        console.log(cartItems)
     },[cartItems])
 
     return(

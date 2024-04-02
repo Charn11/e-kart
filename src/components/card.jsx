@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react'
 import { StarFilledIcon } from '@radix-ui/react-icons'
 import '/src/styles/card.css'
 import { CategoryContext, GridContext, ItemContext, CartContext } from '../App'
+import { NotifyContext } from './shop'
 import { Tooltip } from '@radix-ui/themes';
 
 let topElm, cartTitle, cartPrice, cartQuantity;
@@ -23,6 +24,10 @@ const Card = (props) => {
 
     const cart = useContext(CartContext);
     const setDispCart = cart.setDispCart;
+
+    const notify = useContext(NotifyContext);
+    const addNotif = notify.addNotif;
+    const setAddNotif = notify.setAddNotif;
 
     function starStyle(val){
         if(val>=4){
@@ -54,6 +59,7 @@ const Card = (props) => {
         cartPrice = Number(topElm.children[2].children[0].innerText.slice(1));
         cartQuantity = Number(topElm.children[3].children[1].children[0].value);
         setFlag(true);
+        setAddNotif(true);
     }
 
     useEffect(() => {
@@ -84,12 +90,6 @@ const Card = (props) => {
                     originalPrice: cartPrice}])
             }
             setFlag(false)
-        }
-    },[updateFlag])
-
-    useEffect(() => {
-        if(!updateFlag){
-            console.log(cartProducts);
         }
     },[updateFlag])
     

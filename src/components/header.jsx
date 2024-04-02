@@ -56,7 +56,7 @@ const Header = () => {
             <div className='navbar'>
                 <ul>
                 <li><Link to="/">HOME</Link></li>
-                <li><Link to="shop">SHOP</Link></li>
+                <li><Link to="/shop">SHOP</Link></li>
                 </ul>
             </div>
             <div className="darkmode" data-testid='toggle'>

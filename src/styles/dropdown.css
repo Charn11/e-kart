@@ -15,3 +15,7 @@
     width: 100%;
     font-weight: 500;
 }
+
+.dropmenu>button{
+    width: 100%;
+}
