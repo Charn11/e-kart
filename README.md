@@ -1,8 +1,22 @@
-# React + Vite
+# E-kart - A Shopping app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- E-kart is a Shopping application built using React.
+- Data is fetched from Fake store API and then dispalyed.
+- The application includes a Home and Shop page. The pages are managed using react router.
+- Some base level unit testing is done using vitest snd react testing library
 
-Currently, two official plugins are available:
+## Features:
+- Ability to add and remove products from Cart
+- Search by Products by Category
+- Light/Dark Theme
+- Slideshow which shows higlighted Products on Home Page
+- Responsive design
+- Cart
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used:
+
+- HTML5
+- CSS3
+- JavaScript
+- React
+- Testing: Vitest
