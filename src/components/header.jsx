@@ -79,7 +79,7 @@ const Header = () => {
                     {changeMode()}
             </div>
             <div className="cartbar">
-                <a><img title="Cart" id="imgcart" onClick={handleCart} src="src/assets/shopping_cart_FILL0_wght400_GRAD0_opsz24.svg" alt="cart"></img></a> 
+                <a><img title="Cart" id="imgcart" onClick={handleCart} src="/shopping_cart_FILL0_wght400_GRAD0_opsz24.svg" alt="cart"></img></a> 
             </div>
             </div>
         </header>

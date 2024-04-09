@@ -32,25 +32,25 @@ function Category(){
                 <div className='catImg-container'>
                     <Link to="shop" onClick={() => setValue("men's clothing")}>
                     <div className='second-container'>
-                        <img src="./public/cat3.webp" alt="men's clothing" />
+                        <img src="/cat3.webp" alt="men's clothing" />
                         <p>Men's Clothing</p>
                     </div>
                     </Link>
                     <Link to="shop" onClick={() => setValue("jewelery")}>
                     <div className='second-container'>
-                        <img src="src/assets/cat2.webp" alt="jewellery" />
+                        <img src="/cat2.webp" alt="jewellery" />
                         <p>Jwellery</p>
                     </div>
                     </Link>
                     <Link to="shop" onClick={() => setValue("electronics")}>
                     <div className='second-container'> 
-                        <img src="src/assets/cat1.webp" alt="electronics" />
+                        <img src="/cat1.webp" alt="electronics" />
                         <p>Electronics</p>
                     </div>
                     </Link>
                     <Link to="shop" onClick={() => setValue("women's clothing")}>
                     <div className='second-container'>
-                        <img src="src/assets/cat4.webp" alt="women's clothing" />
+                        <img src="/cat4.webp" alt="women's clothing" />
                         <p>Women's Clothing</p>
                     </div>
                     </Link>

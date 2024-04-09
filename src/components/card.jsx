@@ -153,11 +153,11 @@ const Card = (props) => {
                             <div className='star' style={starStyle(products[i].rating.rate)}>{products[i].rating.rate}<StarFilledIcon></StarFilledIcon> {products[i].rating.count} ratings</div>
                         </div>
                         <div className='cart-container'>
-                            <div className='remove-cart'><img title='Remove from cart'  onClick={handleDelete} src='src/assets/remove_shopping_cart_FILL0_wght400_GRAD0_opsz24.svg'></img></div>
+                            <div className='remove-cart'><img title='Remove from cart'  onClick={handleDelete} src='/remove_shopping_cart_FILL0_wght400_GRAD0_opsz24.svg'></img></div>
                             <div className='cart-count'>
                                 <input type='number' title='Quantity' placeholder='Quantity' defaultValue={cartItem} onChange={e => setCartItem(e.target.value)}></input>
                             </div>
-                            <div className='add-cart'><img title='Add to cart' onClick={e => handleAdd(e)} src='src/assets/add_shopping_cart_FILL0_wght400_GRAD0_opsz24.svg'></img></div>
+                            <div className='add-cart'><img title='Add to cart' onClick={e => handleAdd(e)} src='/add_shopping_cart_FILL0_wght400_GRAD0_opsz24.svg'></img></div>
                         </div>
                     </div>
                 ])
