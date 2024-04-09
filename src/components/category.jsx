@@ -32,7 +32,7 @@ function Category(){
                 <div className='catImg-container'>
                     <Link to="shop" onClick={() => setValue("men's clothing")}>
                     <div className='second-container'>
-                        <img src="/public/assets/cat3.webp" alt="men's clothing" />
+                        <img src="./public/cat3.webp" alt="men's clothing" />
                         <p>Men's Clothing</p>
                     </div>
                     </Link>
