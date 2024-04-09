@@ -37,7 +37,15 @@ const Products = () => {
                     setProducts(response);
                 }
             catch{
-                console.error("error")
+                let rem=document.getElementById('products').childNodes;
+                rem.forEach(e => {
+                    e.remove();
+                })
+                let parent = document.getElementById('products')
+                let jsonError = document.createElement('div');
+                jsonError.setAttribute('id','jError')
+                jsonError.innerText = "Couldn't load products. Please refresh or try again after sometime :(";
+                parent.appendChild(jsonError)
             }
         }
         if(!loadProducts){

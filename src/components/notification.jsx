@@ -28,10 +28,10 @@ const Notification = () => {
     useEffect(() => {
         if(addNotif){
             document.getElementById("notify").style.display = "block";
-            setTimeout(() => {
-                document.getElementById("notify").style.display = "none";
-            },(1000))
             setAddNotif(false);
+            const time = setTimeout(() => {
+                document.getElementById("notify").style.display = "none";
+            },(500))
         }
     },[addNotif])
 

@@ -101,6 +101,7 @@ const Card = (props) => {
         cartPrice = Number(topElm.children[2].children[0].innerText.slice(1));
         cartQuantity = Number(topElm.children[3].children[1].children[0].value);
         setFlag(true);
+        document.getElementById("notify").style.display = "block";
         setAddNotif(true);
     }
 
