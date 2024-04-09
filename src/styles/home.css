@@ -12,6 +12,6 @@
         width: 100%;
         display: grid;
         grid-template-rows: 15% 30% auto 5%;
-        overflow: initial;
+        overflow-y: scroll;
     }
 }

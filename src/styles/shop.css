@@ -4,6 +4,7 @@
     display: grid;
     grid-template-rows: 10% 10% auto 5%;
     overflow-y: scroll;
+    position: relative;
 }
 
 @media (max-width: 1024px){
@@ -12,6 +13,7 @@
         width: 100%;
         display: grid;
         grid-template-rows: 15% 15% auto 5%;
-        overflow: initial;
+        overflow-y: scroll;
+        position: relative;
     }
 }

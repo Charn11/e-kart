@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import '/src/styles/slideshow.css'
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
+import { ThemeContext } from "../App";
 
 let i=0;
 let images = [{src:'src/assets/img1.webp', alt:'welcome image'},{src:'src/assets/img2.webp', alt:'samsung QLED TV'}, {src:"src/assets/img3.webp", 
@@ -12,6 +13,22 @@ function Slideshow(){
 
     const [image, setImage] = useState({src:'', alt:''});
     const [slide, setSlide] = useState(1);
+    const { theme } = useContext(ThemeContext);
+    const [mode, setMode] = theme;
+
+    //change theme
+    useEffect(() => {
+        if(mode==='dark'){
+            document.getElementById("slider-wrapper").style.backgroundColor = "black"
+            document.getElementById("left").style.filter = "invert(1)"
+            document.getElementById("right").style.filter = "invert(1)"
+        }
+        if(mode==='light'){
+            document.getElementById("slider-wrapper").style.backgroundColor = "white"
+            document.getElementById("left").style.filter = "invert(0)"
+            document.getElementById("right").style.filter = "invert(0)"
+        }
+    },[mode])
 
     function slider(){
         return(
@@ -21,7 +38,8 @@ function Slideshow(){
             </div>
          )
     }
-
+    
+    //change image
     function handleSlide(val){
         i=val-1;
         setImage({...image,src: images[i].src, alt: images[i].alt});
@@ -29,6 +47,7 @@ function Slideshow(){
         setSlide(i+1);
     }
 
+    //changes slide based on the arrow clicked
     function handleArrow(str){
         if(str==="left"){
             i = i-1;
@@ -50,6 +69,7 @@ function Slideshow(){
         }
     }
 
+    //functions for handling touch input
     function handleTouchStart(e){
         initialX = e.touches[0].clientX;
         initialY = e.touches[0].clientY;
@@ -69,6 +89,7 @@ function Slideshow(){
         }
     }
 
+    //changes slide every five seconds
     useEffect(() => {
         const interval = setInterval(() => {
             i++;
@@ -87,11 +108,11 @@ function Slideshow(){
             <div id='slider-wrapper'>
                 <div className='arrow-wrapper'>
                     <div className='left'>
-                        <ArrowLeftIcon data-testid='left' width={30} height={30} onClick={() => {handleArrow("left")}}></ArrowLeftIcon>
+                        <ArrowLeftIcon id='left' data-testid='left' width={30} height={30} onClick={() => {handleArrow("left")}}></ArrowLeftIcon>
                     </div>
                     {slider()}
                     <div className='right'>
-                        <ArrowRightIcon data-testid='right' width={30} height={30} onClick={() => {handleArrow()}}></ArrowRightIcon>
+                        <ArrowRightIcon id='right' data-testid='right' width={30} height={30} onClick={() => {handleArrow()}}></ArrowRightIcon>
                     </div>
                 </div>
                 <ol>

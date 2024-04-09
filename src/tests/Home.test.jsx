@@ -1,60 +1,53 @@
-import { render, screen, act, fireEvent} from '@testing-library/react';
-import Header from '../components/header';
-import Slideshow from '../components/slideshow';
-import Category from '../components/category';
-import HomeFooter from '../components/homeFooter';
-import { expect, it, vitest, afterEach, vi } from 'vitest';
-import { ThemeContext, App } from '../App';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { expect, it, vitest } from 'vitest';
+import Router from '../router';
 
 describe('Home Screen', () => {
-    /*it('renders homepage header', () => {
-      render(<Header></Header>)
-      expect(screen.getByText('E-kart', 'Home', 'Shop')).toBeInTheDocument();
-      expect(screen.getByRole('img', {  name: /cart/i})).toBeInTheDocument();
-    });
-    
-    it('renders toggle theme button', async () => {
-      render(<Header />);
-      const element = screen.getByTestId("toggle");
-      expect(element).toBeInTheDocument();
-    });*/
 
-    afterEach(() => {
-      vitest.useRealTimers();
-    });
+    it('renders  header, slide, categories and footer components', () => {
+      const { container } = render(<Router />);
+      const link = screen.getByRole('link', {name: /home/i})
+      expect(link.textContent).toMatch('HOME');
 
-    it("renders sildeshow and check arrow clicks", async () => {
-      vitest.useFakeTimers();
-      render(<Slideshow />);
-      expect(screen.getByRole('img')).toBeInTheDocument();
-
-      act(() => {
-        vitest.advanceTimersByTime(5000);
+      const matches = container.querySelectorAll('img');
+      expect(matches).toHaveLength(6);
+      matches.forEach((m) => {
+        expect(m).toBeInTheDocument();
       });
-      expect(screen.getByRole('img', {name: "samsung QLED TV"})).toBeInTheDocument();
-      expect(screen.getByTestId('left', 'right')).toBeInTheDocument();
 
-      const right = screen.getByTestId('right');
-      fireEvent.click(right);
-      expect(screen.getByRole('img', {name: "White Gold Plated Princess"})).toBeInTheDocument();
-      fireEvent.click(right);
-      expect(screen.getByRole('img', {name: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"})).toBeInTheDocument();
+      expect(screen.getByText(/categories/i)).toBeInTheDocument();
+      expect(screen.getByRole('contentinfo')).toBeInTheDocument();
     })
 
-    it("renders list elements at the bottom of slides", () => {
-      render(<Slideshow />)
-      const liArr = screen.getAllByRole('listitem');
-      expect(liArr[0].style.backgroundColor).toBe("white");
-      expect(liArr[1].style.backgroundColor).not.toBe("white");
+    it('on click of cart open cart popup',() => {
+      const { container } = render(<Router />);
+      const cart = screen.getByAltText('cart')
+      fireEvent.click(cart);
+      expect(screen.getByText(/Price/)).toBeInTheDocument();
     })
 
-    it("check if categories are dispalyed", () => {
-      render(<Category />)
-      expect(screen.getAllByRole("img")).toHaveLength(4);
+    it('renders products according to category when click on category in home', async () => {
+      const mockedData = [{
+        category: "men's clothing", description: "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+      id: 1, image: "fake.jpg", price: 109.95, rating: {count: 120, rate: 3.9}, 
+      title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" 
+      }];
+
+      vitest.spyOn(global, 'fetch').mockResolvedValue({
+        json: vitest.fn().mockResolvedValue(mockedData)
+      });
+
+      render(<Router></Router>);
+      const men = screen.getByAltText("men's clothing");
+      fireEvent.click(men);
+      expect(await screen.findByText('Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops')).toBeInTheDocument()
     })
 
-    it("renders footer text", () => {
-      render(<HomeFooter />)
-      expect(screen.getByText("© 2024 E-kart. All rights reserved.")).toBeInTheDocument();
+    it('when click on shop link opens shop page', () => {
+      render(<Router></Router>);
+      const shop = screen.getByRole('link', {name: /shop/i})
+      fireEvent.click(shop)
+      expect(screen.getByText('Choose Category:')).toBeInTheDocument();
     })
+
   });

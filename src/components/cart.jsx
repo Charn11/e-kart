@@ -3,6 +3,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { CartContext, ItemContext } from "../App";
 import { Table } from '@radix-ui/themes';
 import { PlusIcon, MinusIcon } from '@radix-ui/react-icons';
+import { Theme } from '@radix-ui/themes';
 
 let title, quantity, price, originalPrice;
 
@@ -11,11 +12,9 @@ const Cart = () => {
     const cart = useContext(CartContext);
     const dispCart = cart.dispCart;
     const setDispCart = cart.setDispCart;
-
     const cartValues = useContext(ItemContext);
     const cartProducts = cartValues.cartProducts;
     const setCartProducts = cartValues.setCartProducts;
-
     const [cartItems, setCartitems] = useState([]);
     const [updatePlus, setPlus] = useState(false);
     const [updateMinus, setMinus] = useState(false);
@@ -28,10 +27,12 @@ const Cart = () => {
         return cartItems;
     }
 
+    //when click on remove button
     function handleRemove(rem){
         setCartProducts(cartProducts.filter(a => a.title !== rem));
     }
 
+    //when click on plus sign
     function handlePlus(t, q, p, o){
         title = t;
         quantity = q;
@@ -40,6 +41,7 @@ const Cart = () => {
         setPlus(true);
     }
 
+    //when click on minus sign
     function handleDel(t, q, p, o){
         title = t;
         quantity = q;
@@ -48,6 +50,7 @@ const Cart = () => {
         setMinus(true);
     }
 
+    //adds or removes from cart array
     useEffect(() => {
         let index;
         let added = false;
@@ -90,6 +93,7 @@ const Cart = () => {
         }
     },[updatePlus, updateMinus])
 
+    //when user clicks minus and item count becomes zero it removes from cart
     useEffect(() => {
         for(let i=0; i<cartProducts.length; i++){
             if(cartProducts[i].quantity===0){
@@ -98,6 +102,7 @@ const Cart = () => {
         }
     },[cartProducts])
 
+    //styles cart popup when user clicks cart icon
     useEffect(() => {
         if(dispCart===true){
             document.getElementById("cart").style.display = "block";
@@ -122,6 +127,7 @@ const Cart = () => {
         }
     },[dispCart])
 
+    //display cart
     useEffect(() => {
         setCartitems([]);
         for(let i=0; i<cartProducts.length; i++){
@@ -148,6 +154,7 @@ const Cart = () => {
         }
     },[cartProducts])
 
+    //if cart is empty display empty
     useEffect(() => {
         if(cartItems.length>0){
             document.getElementById('empty').style.display = "none";

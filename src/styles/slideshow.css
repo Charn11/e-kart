@@ -99,3 +99,36 @@ ol li{
     }
 }
 
+@media (max-width: 600px){
+    ol{
+        top: 75%;
+    }
+
+    ol li{
+        width: 5px;
+        height: 5px;
+    }
+}
+
+@media (max-width: 500px){
+    ol{
+        top: 75%;
+    }
+
+    ol li{
+        width: 5px;
+        height: 5px;
+    }
+}
+
+
+@media (max-width: 400px){
+    ol{
+        top: 65%;
+    }
+
+    ol li{
+        width: 5px;
+        height: 5px;
+    }
+}

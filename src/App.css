@@ -8,6 +8,11 @@
   /*outline: 1px solid #f00 !important;*/
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 a{
   color: inherit;
 }

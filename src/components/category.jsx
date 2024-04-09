@@ -1,18 +1,33 @@
 import '/src/styles/category.css'
 import { Link } from "react-router-dom";
-import { CategoryContext } from '../App'
-import { useContext } from 'react'
+import { CategoryContext, ThemeContext } from '../App'
+import { useContext, useEffect } from 'react'
 
 function Category(){
 
     const categoryValue = useContext(CategoryContext);
     const setValue = categoryValue.setValue;
 
+    const { theme } = useContext(ThemeContext);
+    const [mode, setMode] = theme;
+
+    //change theme
+    useEffect(() => {
+        if(mode==='dark'){
+            document.getElementById("category-container").style.backgroundColor = "black"
+            document.getElementById("category-container").style.color = "white"
+        }
+        if(mode==='light'){
+            document.getElementById("category-container").style.backgroundColor = "white"
+            document.getElementById("category-container").style.color = "black"
+        }
+    },[mode])
+
     return(
         <section>
-            <div className='category-container'>
+            <div className='category-container' id='category-container'>
                 <div className='p-container'>
-                    <p>CATEGORIES</p>
+                    <p id='p-cont'>CATEGORIES</p>
                 </div>
                 <div className='catImg-container'>
                     <Link to="shop" onClick={() => setValue("men's clothing")}>

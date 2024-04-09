@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import Card from './card';
 import '/src/styles/products.css'
-import { GridContext } from '../App'
+import { GridContext, ThemeContext } from '../App'
 
 const Products = () => {
 
@@ -12,7 +12,22 @@ const Products = () => {
     const updateGrid = grid.updateGrid;
     const setUpdate = grid.setUpdate;
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const { theme } = useContext(ThemeContext);
+    const [mode, setMode] = theme;
 
+    //change theme
+    useEffect(() => {
+        if(mode==='dark'){
+            document.getElementById("products").style.backgroundColor = "black"
+            document.getElementById("products").style.color = "white"
+        }
+        if(mode==='light'){
+            document.getElementById("products").style.backgroundColor = "white"
+            document.getElementById("products").style.color = "black"
+        }
+    },[mode])
+
+    //get product data
     useEffect(() => {
         async function getData(){
             try{
@@ -30,6 +45,7 @@ const Products = () => {
         }
     },[])
 
+    //change products grid size based on screen width
     useEffect(() => {
         function reportWindowSize() {
             setWindowWidth(window.innerWidth)
@@ -66,7 +82,7 @@ const Products = () => {
     
     return(
         <main>
-        <div className="products" style={{gridTemplateRows: gridVal}}>
+        <div className="products" id='products' style={{gridTemplateRows: gridVal}}>
             <Card products={products} loadProducts={loadProducts} ></Card>
         </div>
         </main>

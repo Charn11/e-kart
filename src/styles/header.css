@@ -50,7 +50,9 @@ ul>li>a{
     text-align: center;
     font-weight: 600;
 }
-
+a:hover, li:hover{
+    color: black;
+}
 .cartbar{
     align-items: center;
     justify-content: center;
@@ -67,8 +69,6 @@ button {
 
 .Toggle {
     cursor: pointer;
-    background-color: white;
-    color: var(--mauve-11);
     height: 35px;
     width: 35px;
     border-radius: 4px;
