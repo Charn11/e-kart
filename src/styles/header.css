@@ -1,6 +1,6 @@
 @font-face {
     font-family: turret;
-    src: url('../assets/TurretRoad-Regular.ttf');
+    src: url('/TurretRoad-Regular.ttf');
   }
 
 .header{

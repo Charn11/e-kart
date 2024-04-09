@@ -4,8 +4,8 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import { ThemeContext } from "../App";
 
 let i=0;
-let images = [{src:'src/assets/img1.webp', alt:'welcome image'},{src:'src/assets/img2.webp', alt:'samsung QLED TV'}, {src:"src/assets/img3.webp", 
-alt:"White Gold Plated Princess"}, {src:"src/assets/img4.webp", alt:"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"}, {src:"src/assets/img5.webp", 
+let images = [{src:'/img1.webp', alt:'welcome image'},{src:'/img2.webp', alt:'samsung QLED TV'}, {src:"/img3.webp", 
+alt:"White Gold Plated Princess"}, {src:"/img4.webp", alt:"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"}, {src:"/img5.webp", 
 alt:"Rain Jacket Women Windbreaker Striped Climbing Raincoats"}];
 let initialX, initialY, initialTime;
 
