@@ -7,9 +7,9 @@
 
 ## Features:
 - Ability to add and remove products from Cart
-- Search by Products by Category
+- Search for Products by Category
 - Light/Dark Theme
-- Slideshow which shows higlighted Products on Home Page
+- Slideshow which shows highlighted Products on Home Page
 - Responsive design
 - Cart
 
