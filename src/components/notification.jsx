@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, useState } from 'react'
 import { NotifyContext } from './shop'
 import '/src/styles/notification.css'
 import { ThemeContext } from "../App";
@@ -28,10 +28,10 @@ const Notification = () => {
     useEffect(() => {
         if(addNotif){
             document.getElementById("notify").style.display = "block";
-            setAddNotif(false);
             const time = setTimeout(() => {
+                setAddNotif(false);
                 document.getElementById("notify").style.display = "none";
-            },(500))
+            },(300))
         }
     },[addNotif])
 

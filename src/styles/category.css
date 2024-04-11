@@ -1,3 +1,7 @@
+@font-face {
+    font-family: turret;
+    src: url('/src/assets/TurretRoad-Regular.ttf');
+  }
 .category-container{
     display: flex;
     flex-direction: column;
