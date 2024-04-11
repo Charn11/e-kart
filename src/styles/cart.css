@@ -74,6 +74,11 @@
     cursor: pointer;
 }
 
+.total{
+    padding: 5px 0 5px 0;
+    font-weight: 700;
+}
+
 @media (max-width: 1024px){
     .cart{
         width: 90%;

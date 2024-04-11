@@ -1,5 +1,5 @@
 import '/src/styles/cart.css'
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext, useState, useMemo } from "react";
 import { CartContext, ItemContext } from "../App";
 import { Table } from '@radix-ui/themes';
 import { PlusIcon, MinusIcon } from '@radix-ui/react-icons';
@@ -18,6 +18,8 @@ const Cart = () => {
     const [cartItems, setCartitems] = useState([]);
     const [updatePlus, setPlus] = useState(false);
     const [updateMinus, setMinus] = useState(false);
+
+    const [total, setTotal] = useState(0);
 
     function handleClose(){
         setDispCart(false);
@@ -49,6 +51,13 @@ const Cart = () => {
         originalPrice = o;
         setMinus(true);
     }
+
+    const totalPrice = useMemo(() => {
+        return cartProducts.reduce(
+          (total, product) => Math.round((total + product.price + Number.EPSILON) * 100) / 100,
+          0
+        );
+      }, [cartProducts]);
 
     //adds or removes from cart array
     useEffect(() => {
@@ -187,6 +196,7 @@ const Cart = () => {
             <div>
                 <p className='empty' id='empty'>Your cart is empty!</p>
             </div>
+            <p className='total'>Total: ${totalPrice}</p>
             </div>
             <div>
                 <button className='close' onClick={handleClose}>Close</button>
